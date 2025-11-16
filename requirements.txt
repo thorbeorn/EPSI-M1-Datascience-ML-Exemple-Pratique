@@ -2,3 +2,5 @@ scikit-learn
 certifi
 requests
 matplotlib
+seaborn
+pandas
