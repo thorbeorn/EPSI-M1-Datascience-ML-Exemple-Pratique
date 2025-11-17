@@ -8,6 +8,7 @@ Ce repository contient une série d'exercices pratiques pour apprendre le Machin
 2. [Régression Logistique](#2-régression-logistique)
 3. [Clustering K-Means](#3-clustering-k-means)
 4. [Comparaison de Modèles](#4-comparaison-de-modèles)
+5. [Analyse du Churn – Télécommunications](#5.-Analyse-du-Churn---Télécommunications)
 
 ---
 
@@ -256,6 +257,123 @@ for name, model in models.items():
 5. Temps d'exécution
 6. Validation croisée (5-fold)
 7. Classement par F1-Score
+
+---
+
+# 5. Analyse du Churn – Télécommunications
+
+## 🎯 Objectif du Projet
+
+Ce projet vise à réduire la perte de clients (churn) pour une entreprise de télécommunications grâce à :
+- La prédiction des clients à risque
+- La segmentation comportementale
+- Des recommandations personnalisées
+
+---
+
+## 📁 Structure du Projet
+```txt
+telecom-churn-analysis/
+│
+├── telecom_churn.csv              # Dataset (à fournir)
+├── client_lost_telecom.py         # Script principal
+├── churn_analysis_results.png     # Visualisations générées
+├── README.md                      # Ce fichier
+└── requirements.txt               # Dépendances Python
+```
+
+---
+
+## 🔧 Installation
+
+    1. Cloner le projet
+    git clone https://github.com/thorbeorn/EPSI-M1-Datascience-ML-Exemple-Pratique.git
+    cd EPSI-M1-Datascience-ML-Exemple-Pratique
+
+    2. Installer les dépendances
+    pandas>=1.3.0  
+    numpy>=1.21.0  
+    matplotlib>=3.4.0  
+    seaborn>=0.11.0  
+    scikit-learn>=1.0.0  
+
+---
+
+## 📊 Structure des Données
+```csv
+Colonne	Description
+customerID	Identifiant unique du client
+tenure	Ancienneté
+Contract	Type de contrat
+InternetService	Type d'abonnement internet
+MonthlyCharges	Coût mensuel
+TotalCharges	Coût total
+Churn	Client parti (Yes/No) – target
+```
+
+(+ toutes les autres colonnes du jeu IBM)	
+
+---
+
+## 🚀 Exécution
+Lancer l’analyse complète :
+```bash
+python client_lost_telecom/client_lost_telecom.py
+```
+
+Le script génère :
+- Rapport de classification
+- Score AUC-ROC
+- Top 10 features
+- Résultats du clustering
+- Recommandations business
+- Fichier churn_analysis_results.png (6 graphiques)
+
+## 🧠 Méthodes Employées
+### 1️⃣ Régression Logistique (Supervisée)
+- Interprétable
+- Probabilités de churn
+- Baseline robuste
+
+- Évaluation :
+    - Accuracy, Recall, F1
+    - AUC-ROC
+    - Matrice de confusion
+
+### 2️⃣ K-Means (Non supervisé)
+- Segmentation des comportements
+- Identification des clusters à risque
+- Support des stratégies de rétention
+
+- Sorties :
+    - Méthode du coude
+    - Score de silhouette
+    - Taux de churn par cluster
+
+## 📈 Résultats Clés Attendus
+    - Exemple console :
+    📊 AUC-ROC: 0.85
+    🔝 Top features: Contract, tenure, OnlineSecurity...
+    ⚠️ Clients à haut risque: 342
+
+### Graphiques générés :
+- Courbe ROC
+- Matrice de confusion
+- Features importantes
+- Courbe du coude
+- Silhouette
+- Taux de churn par cluster
+
+## 💡 Recommandations
+Actions immédiates
+- Contacter les clients avec probabilité > 70%
+- Proposer des offres d'engagement
+- Améliorer les services critiques (TechSupport, OnlineSecurity)
+
+Stratégies par cluster
+- Cluster haut risque : actions rapides
+- Cluster modéré : analyse satisfaction
+- Cluster loyal : programme fidélité
 
 ---
 
