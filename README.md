@@ -9,6 +9,7 @@ Ce repository contient une série d'exercices pratiques pour apprendre le Machin
 3. [Clustering K-Means](#3-clustering-k-means)
 4. [Comparaison de Modèles](#4-comparaison-de-modèles)
 5. [Analyse du Churn – Télécommunications](#5.-Analyse-du-Churn---Télécommunications)
+6. [Clustering des Tumeurs – Breast Cancer Wisconsin](#6-clustering-des-tumeurs--breast-cancer-wisconsin)
 
 ---
 
@@ -376,6 +377,96 @@ Stratégies par cluster
 - Cluster loyal : programme fidélité
 
 ---
+
+# 6. Clustering des Tumeurs – Breast Cancer Wisconsin
+
+Ce projet réalise une analyse complète du dataset **Breast Cancer Wisconsin** (disponible via `sklearn.datasets.load_breast_cancer`) afin d'explorer la possibilité de segmenter les tumeurs en groupes cohérents via **K-Means**. Il est pensé comme un notebook/script pédagogique pour illustrer un pipeline complet d'analyse non-supervisée appliquée à un contexte médical.
+
+---
+
+## 🔍 Objectif principal
+
+- Explorer et préparer les données  
+- Normaliser et réduire la dimension si nécessaire  
+- Déterminer le nombre optimal de clusters (méthode du coude, silhouette)  
+- Entraîner K-Means et évaluer la qualité du clustering  
+- Visualiser les clusters (PCA + silhouette plots + comparaisons avec les classes réelles)
+
+---
+
+## ✅ Étapes clés du pipeline
+
+1. **Chargement des données**  
+   Dataset chargé via `sklearn.datasets.load_breast_cancer` → DataFrame Pandas.
+
+2. **Exploration initiale**  
+   - Statistiques descriptives  
+   - Distributions, boxplots  
+   - Matrice de corrélation (heatmap)
+
+3. **Nettoyage des données**  
+   - Vérification de l'absence de valeurs manquantes  
+   - Suppression des doublons
+
+4. **Sélection des variables pertinentes**  
+   - Analyse de corrélation  
+   - Possibilité de garder uniquement les features "mean" pour réduire la redondance
+
+5. **Normalisation**  
+   - Standardisation avec `StandardScaler` (indispensable pour K-Means)
+
+6. **Séparation train/test**  
+   Exemple : `train_test_split(test_size=0.2, random_state=42)`
+
+7. **Détermination du nombre optimal de clusters**  
+   - Méthode du coude (inertie)  
+   - Score de silhouette pour chaque K de 2 à 10  
+
+8. **Apprentissage du modèle K-Means**  
+   - `KMeans(n_clusters=2, random_state=42)`  
+   - Entraînement sur données normalisées  
+
+9. **Évaluation**  
+   - Inertie  
+   - Silhouette score  
+   - Matrice de comparaison clusters vs classes réelles (`pd.crosstab`)
+
+10. **Visualisations**  
+    - PCA en 2 dimensions pour visualiser les clusters  
+    - Silhouette plot  
+    - Heatmap de correspondance clusters / classes médicales  
+    - Barplots des variables moyennes par cluster
+
+---
+
+## 📌 Résultats clés attendus
+
+- **Nombre optimal de clusters** : généralement **K = 2**  
+- **Silhouette score** : souvent > 0.40  
+- **Bonne séparation visuelle** via PCA  
+- **Correspondance notable mais non parfaite** entre clusters et classes malignes / bénignes
+
+---
+
+## 📁 Sorties produites
+
+- `elbow_method.png` — inertie et silhouette par K  
+- `clusters_pca.png` — PCA avec couleurs de clusters  
+- `silhouette_plot.png` — silhouette score détaillé  
+- `clusters_vs_classes.png` — comparaison clusters/diagnostics
+
+---
+
+## ▶️ Exécution
+
+Si script :  
+
+```bash
+python breast_cancer_clustering.py
+```
+
+---
+
 
 ## 📖 Ressources
 
