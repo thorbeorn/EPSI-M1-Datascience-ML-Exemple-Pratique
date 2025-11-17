@@ -35,8 +35,8 @@ telecom-churn-analysis/
 
 ### Étape 1 : Cloner le projet
 ```bash
-git clone https://github.com/votre-repo/telecom-churn-analysis.git
-cd telecom-churn-analysis
+git clone https://github.com/thorbeorn/EPSI-M1-Datascience-ML-Exemple-Pratique.git
+cd EPSI-M1-Datascience-ML-Exemple-Pratique
 ```
 
 ### Étape 2 : Installer les dépendances
@@ -89,7 +89,7 @@ Le fichier CSV doit contenir les colonnes suivantes :
 
 ### Exécuter l'analyse complète
 ```bash
-python churn_analysis.py
+python client_lost_telecom/client_lost_telecom.py
 ```
 
 ### Résultat attendu
